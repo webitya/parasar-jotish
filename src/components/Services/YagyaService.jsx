@@ -45,7 +45,7 @@ export default function YagyaService() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full blur-3xl opacity-20"></div>
                 <Image
-                  src="/services/yagya-hero.png"
+                  src="/yagya-hero.png"
                   alt="Sacred fire ceremony"
                   width={600}
                   height={500}

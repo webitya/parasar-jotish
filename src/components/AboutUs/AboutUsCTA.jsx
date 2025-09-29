@@ -16,7 +16,7 @@ export default function AboutUsCTA() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Journey?</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-            Join thousands of satisfied users who have found clarity and guidance through TalkAstro.
+            Join thousands of satisfied users who have found clarity and guidance through Dr D Mahto .
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

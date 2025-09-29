@@ -136,7 +136,7 @@ export default function RudrakshaService() {
                 transition={{ duration: 0.5 }}
               >
                 <Image
-                  src="/services/rudraksha-tree.png"
+                  src="/rudraksha-tree.png"
                   alt="Rudraksha tree and beads"
                   width={500}
                   height={400}
@@ -250,12 +250,7 @@ export default function RudrakshaService() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-lg font-bold text-orange-500">{type.price}</span>
-                  <Link
-                    href="/astrologers?specialty=Rudraksha Consultation"
-                    className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-700 transition-colors text-sm"
-                  >
-                    Consult Now
-                  </Link>
+              
                 </div>
               </motion.div>
             ))}

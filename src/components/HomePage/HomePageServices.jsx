@@ -5,67 +5,39 @@ import ServiceCard from "@/components/service-card"
 
 const services = [
   {
-    id: "astrology",
-    title: "Astrology",
-    description: "Discover insights about your life path through the ancient wisdom of astrology.",
+    id: "horoscope",
+    title: "Horoscope Analysis",
+    description: "Get personalized horoscope insights to understand your life's path and opportunities.",
     icon: "/logo.png",
     color: "from-purple-500 to-indigo-600",
   },
   {
-    id: "rudraksha",
-    title: "Rudraksha",
-    description: "Harness the spiritual power of sacred Rudraksha beads for balance and protection.",
-    icon: "/logo.png",
-    color: "from-orange-500 to-red-600",
-  },
-  {
-    id: "vastu",
-    title: "Vedic Vastu Shastra",
-    description: "Create harmony in your living spaces with ancient architectural wisdom.",
-    icon: "/logo.png",
-    color: "from-green-500 to-teal-600",
-  },
-  {
-    id: "meditation",
-    title: "Meditation",
-    description: "Find inner peace and clarity through guided meditation practices.",
+    id: "career",
+    title: "Career Counselling",
+    description: "Receive astrological guidance to make informed decisions about your career and growth.",
     icon: "/logo.png",
     color: "from-blue-500 to-cyan-600",
   },
   {
-    id: "sound-healing",
-    title: "The Sound Energy Healing",
-    description: "Experience the therapeutic vibrations of sound for mental and physical healing.",
-    icon: "/logo.png",
-    color: "from-yellow-500 to-amber-600",
-  },
-  {
-    id: "tarot",
-    title: "Tarot Card Readings",
-    description: "Gain clarity on life's questions through the mystical wisdom of tarot cards.",
+    id: "marriage",
+    title: "Marriage Problem",
+    description: "Find solutions for marriage-related issues with the help of astrological remedies.",
     icon: "/logo.png",
     color: "from-pink-500 to-rose-600",
   },
   {
-    id: "puja",
-    title: "Siddhi Puja Rituals",
-    description: "Participate in sacred rituals designed to manifest specific intentions.",
+    id: "health",
+    title: "Health Issue",
+    description: "Discover root causes of health challenges and remedies through astrology.",
     icon: "/logo.png",
-    color: "from-red-500 to-orange-600",
+    color: "from-green-500 to-teal-600",
   },
   {
-    id: "vedic-trust",
-    title: "Vedic Sanatan Trust",
-    description: "Connect with the timeless wisdom of Vedic traditions and teachings.",
+    id: "others",
+    title: "Other Problems",
+    description: "Seek guidance and solutions for various personal and professional challenges.",
     icon: "/logo.png",
-    color: "from-indigo-500 to-violet-600",
-  },
-  {
-    id: "yagya",
-    title: "Yagya",
-    description: "Experience the transformative power of sacred fire ceremonies.",
-    icon: "/logo.png",
-    color: "from-amber-500 to-yellow-600",
+    color: "from-orange-500 to-red-600",
   },
 ]
 
@@ -97,7 +69,7 @@ export default function HomePageServices() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore our range of spiritual and astrological services designed to guide you on your journey.
+            Explore our range of astrological services designed to guide you through life’s challenges and opportunities.
           </p>
         </motion.div>
 

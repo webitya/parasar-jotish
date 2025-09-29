@@ -9,7 +9,7 @@ const testimonials = [
     name: "Priya Sharma",
     role: "Delhi",
     content:
-      "TalkAstro helped me gain clarity during a difficult time in my life. The astrologer was insightful and compassionate.",
+      "They helped me gain clarity during a difficult time in my life. The astrologer was insightful and compassionate.",
     avatar: "/avatars/testimonial-1.jpg",
   },
   {
@@ -23,7 +23,7 @@ const testimonials = [
     name: "Ananya Patel",
     role: "Bangalore",
     content:
-      "The convenience of chatting with an astrologer from home is amazing. TalkAstro has become my go-to for spiritual guidance.",
+      "The convenience of chatting with an astrologer from home is amazing. He has become my go-to for spiritual guidance.",
     avatar: "/avatars/testimonial-3.jpg",
   },
 ]
@@ -43,7 +43,7 @@ export default function HomePageTestimonials() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Hear from people who have found guidance and clarity through TalkAstro.
+            Hear from people who have found guidance and clarity through Dr D Mahto .
           </p>
         </motion.div>
 
