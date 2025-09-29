@@ -20,7 +20,7 @@ export default function HomePageHero() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Discover Your Path with{" "}
               <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                TalkAstro
+Dr D Mahto 
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-8">
@@ -52,7 +52,7 @@ export default function HomePageHero() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-500 to-red-500 rounded-full blur-3xl opacity-20"></div>
               <Image
-                src="/logo.png?height=400&width=400&text=Astrology+Consultation"
+                src="/pandit.jpg?height=400&width=400&text=Astrology+Consultation"
                 alt="Astrology consultation"
                 width={400}
                 height={400}

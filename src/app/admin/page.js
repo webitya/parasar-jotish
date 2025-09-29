@@ -2,342 +2,391 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { motion } from "framer-motion"
 import {
-  Visibility,
-  VisibilityOff,
-  Email,
-  Lock,
-  AdminPanelSettings,
-  Security,
-  Shield,
-  Warning,
   Dashboard,
+  People,
   Star,
+  AttachMoney,
+  TrendingUp,
+  Schedule,
+  Settings,
+  ExitToApp,
+  PersonAdd,
+  Payment,
+  Chat,
+  Analytics,
+  Security,
+  AdminPanelSettings,
 } from "@mui/icons-material"
-import { useAuth } from "@/hooks/use-auth"
-import { toast, toastTypes } from "@/components/ui/toaster"
+import AdminLayout from "@/components/admin/admin-layout"
 
-export default function AdminLoginPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [loginAttempts, setLoginAttempts] = useState(0)
-  const [isLocked, setIsLocked] = useState(false)
-  const [lockTimeRemaining, setLockTimeRemaining] = useState(0)
-  const [securityLevel, setSecurityLevel] = useState("medium")
+// Simple StatsCard component
+function StatsCard({ title, value, icon, color, change, changeType }) {
+  const colorClasses = {
+    blue: "bg-blue-50 text-blue-600",
+    purple: "bg-purple-50 text-purple-600",
+    green: "bg-green-50 text-green-600",
+    orange: "bg-orange-50 text-orange-600",
+    indigo: "bg-indigo-50 text-indigo-600",
+    red: "bg-red-50 text-red-600",
+  }
+
+  return (
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm font-medium text-gray-600">{title}</p>
+          <p className="text-2xl font-bold text-gray-900 mt-1">{value}</p>
+        </div>
+        <div className={`p-3 rounded-lg ${colorClasses[color]}`}>
+          {icon}
+        </div>
+      </div>
+      {change && (
+        <div className="mt-4 flex items-center">
+          <span
+            className={`text-sm font-medium ${
+              changeType === "increase" ? "text-green-600" : "text-red-600"
+            }`}
+          >
+            {change}
+          </span>
+          <span className="text-sm text-gray-500 ml-1">from last month</span>
+        </div>
+      )}
+    </div>
+  )
+}
+
+// Simple RecentActivity component
+function RecentActivity({ activities, isLoading }) {
+  if (isLoading) {
+    return (
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+        <div className="space-y-4">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div key={i} className="animate-pulse">
+              <div className="flex items-center space-x-4">
+                <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
+                <div className="flex-1">
+                  <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                  <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  const getActivityIcon = (type) => {
+    switch (type) {
+      case "user_signup":
+        return <PersonAdd className="h-5 w-5 text-blue-600" />
+      case "astrologer_application":
+        return <Star className="h-5 w-5 text-purple-600" />
+      case "booking_created":
+        return <Schedule className="h-5 w-5 text-green-600" />
+      case "payment_received":
+        return <Payment className="h-5 w-5 text-orange-600" />
+      default:
+        return <Dashboard className="h-5 w-5 text-gray-600" />
+    }
+  }
+
+  const formatTime = (timestamp) => {
+    const now = new Date()
+    const diff = now - new Date(timestamp)
+    const minutes = Math.floor(diff / (1000 * 60))
+    
+    if (minutes < 1) return "Just now"
+    if (minutes < 60) return `${minutes}m ago`
+    const hours = Math.floor(minutes / 60)
+    if (hours < 24) return `${hours}h ago`
+    const days = Math.floor(hours / 24)
+    return `${days}d ago`
+  }
+
+  return (
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+        <TrendingUp className="h-5 w-5 mr-2 text-gray-600" />
+        Recent Activity
+      </h3>
+      <div className="space-y-4">
+        {activities.map((activity) => (
+          <div key={activity.id} className="flex items-start space-x-4 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+            <div className="flex-shrink-0 p-2 bg-gray-100 rounded-full">
+              {getActivityIcon(activity.type)}
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-gray-900">{activity.title}</p>
+              <p className="text-sm text-gray-500 mt-1">{activity.description}</p>
+              <p className="text-xs text-gray-400 mt-1">{formatTime(activity.timestamp)}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default function AdminDashboard() {
+  const [adminUser, setAdminUser] = useState(null)
+  const [stats, setStats] = useState({
+    totalUsers: 1234,
+    totalAstrologers: 89,
+    totalBookings: 456,
+    totalRevenue: 125000,
+    activeChats: 23,
+    pendingApprovals: 12,
+  })
+  const [recentActivity, setRecentActivity] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
-  const { login } = useAuth()
 
-  // Security lockout timer
   useEffect(() => {
-    if (isLocked && lockTimeRemaining > 0) {
-      const timer = setTimeout(() => {
-        setLockTimeRemaining(lockTimeRemaining - 1)
-      }, 1000)
-      return () => clearTimeout(timer)
-    } else if (lockTimeRemaining === 0) {
-      setIsLocked(false)
-      setLoginAttempts(0)
-    }
-  }, [isLocked, lockTimeRemaining])
+    // Check admin authentication
+    const adminData = localStorage.getItem("admin_user")
+    const adminToken = localStorage.getItem("admin_token")
 
-  // Password strength checker
-  useEffect(() => {
-    if (password.length === 0) {
-      setSecurityLevel("none")
-    } else if (password.length < 6) {
-      setSecurityLevel("weak")
-    } else if (password.length < 10) {
-      setSecurityLevel("medium")
-    } else {
-      setSecurityLevel("strong")
-    }
-  }, [password])
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    if (isLocked) {
-      toast(`Account locked. Try again in ${lockTimeRemaining} seconds.`, toastTypes.ERROR)
+    if (!adminData || !adminToken) {
+      router.push("/admin/login")
       return
     }
 
-    setIsLoading(true)
+    setAdminUser(JSON.parse(adminData))
+    loadDashboardData()
+  }, [router])
 
+  const loadDashboardData = async () => {
     try {
-      // Check if it's admin credentials
-      if (email !== "aditya@gmail.com" || password !== "12345678") {
-        throw new Error("Invalid admin credentials")
-      }
+      // Simulate loading dashboard data
+      await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      // Simulate admin login
-      const adminUser = {
-        id: "admin_001",
-        email: "aditya@gmail.com",
-        name: "Aditya",
-        role: "super_admin",
-        permissions: ["all"],
-      }
+      // Mock recent activity data
+      const mockActivity = [
+        {
+          id: 1,
+          type: "user_signup",
+          title: "New User Registration",
+          description: "Rahul Kumar joined the platform",
+          timestamp: new Date(Date.now() - 1000 * 60 * 5), // 5 minutes ago
+        },
+        {
+          id: 2,
+          type: "astrologer_application",
+          title: "Astrologer Application",
+          description: "Priya Sharma applied to become an astrologer",
+          timestamp: new Date(Date.now() - 1000 * 60 * 15), // 15 minutes ago
+        },
+        {
+          id: 3,
+          type: "booking_created",
+          title: "New Booking",
+          description: "Session booked for Vedic Astrology",
+          timestamp: new Date(Date.now() - 1000 * 60 * 30), // 30 minutes ago
+        },
+        {
+          id: 4,
+          type: "payment_received",
+          title: "Payment Received",
+          description: "₹500 payment for consultation",
+          timestamp: new Date(Date.now() - 1000 * 60 * 45), // 45 minutes ago
+        },
+        {
+          id: 5,
+          type: "user_signup",
+          title: "New User Registration",
+          description: "Anjali Patel joined the platform",
+          timestamp: new Date(Date.now() - 1000 * 60 * 60), // 1 hour ago
+        },
+      ]
 
-      // Store admin session
-      localStorage.setItem("admin_user", JSON.stringify(adminUser))
-      localStorage.setItem("admin_token", "admin_token_" + Date.now())
-
-      toast("Admin login successful! Redirecting to dashboard...", toastTypes.SUCCESS)
-      router.push("/admin")
+      setRecentActivity(mockActivity)
+      setIsLoading(false)
     } catch (error) {
-      const newAttempts = loginAttempts + 1
-      setLoginAttempts(newAttempts)
-
-      if (newAttempts >= 3) {
-        setIsLocked(true)
-        setLockTimeRemaining(300) // 5 minutes lockout
-        toast("Too many failed attempts. Account locked for 5 minutes.", toastTypes.ERROR)
-      } else {
-        toast(`Invalid credentials. ${3 - newAttempts} attempts remaining.`, toastTypes.ERROR)
-      }
-    } finally {
+      console.error("Error loading dashboard data:", error)
       setIsLoading(false)
     }
   }
 
-  const getSecurityColor = () => {
-    switch (securityLevel) {
-      case "weak":
-        return "text-red-400"
-      case "medium":
-        return "text-yellow-400"
-      case "strong":
-        return "text-green-400"
-      default:
-        return "text-gray-500"
-    }
+  const handleLogout = () => {
+    localStorage.removeItem("admin_user")
+    localStorage.removeItem("admin_token")
+    router.push("/admin/login")
   }
 
-  const getSecurityWidth = () => {
-    switch (securityLevel) {
-      case "weak":
-        return "w-1/4"
-      case "medium":
-        return "w-1/2"
-      case "strong":
-        return "w-full"
-      default:
-        return "w-0"
-    }
-  }
-
-  const getSecurityBg = () => {
-    switch (securityLevel) {
-      case "weak":
-        return "bg-red-500"
-      case "medium":
-        return "bg-yellow-500"
-      case "strong":
-        return "bg-green-500"
-      default:
-        return "bg-gray-500"
-    }
+  if (!adminUser) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
+      </div>
+    )
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
-      {/* Floating Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
-      </div>
-
-      {/* Main Login Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 20, scale: 0.95 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="w-full max-w-md relative z-10"
-      >
-        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8">
-          {/* Security Badge */}
-          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-            <div className="flex items-center bg-red-500 text-white px-4 py-1 rounded-full text-xs font-semibold shadow-lg">
-              <Shield className="h-3 w-3 mr-1" />
-              SECURE ADMIN PANEL ACCESS
+    <AdminLayout>
+      <div className="space-y-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 flex items-center">
+              <Dashboard className="h-8 w-8 mr-3 text-orange-500" />
+              Admin Dashboard
+            </h1>
+            <p className="text-gray-600 mt-1">Welcome back, {adminUser.name}! Here s what s happening today.</p>
+          </div>
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center bg-orange-50 px-3 py-2 rounded-lg">
+              <AdminPanelSettings className="h-5 w-5 text-orange-500 mr-2" />
+              <span className="text-sm font-medium text-orange-700">Super Admin</span>
             </div>
+            <button
+              onClick={handleLogout}
+              className="flex items-center bg-red-50 hover:bg-red-100 px-3 py-2 rounded-lg text-red-600 transition-colors"
+            >
+              <ExitToApp className="h-4 w-4 mr-2" />
+              Logout
+            </button>
+          </div>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+          <StatsCard
+            title="Total Users"
+            value={stats.totalUsers.toLocaleString()}
+            icon={<People className="h-6 w-6" />}
+            color="blue"
+            change="+12%"
+            changeType="increase"
+          />
+          <StatsCard
+            title="Astrologers"
+            value={stats.totalAstrologers.toLocaleString()}
+            icon={<Star className="h-6 w-6" />}
+            color="purple"
+            change="+5%"
+            changeType="increase"
+          />
+          <StatsCard
+            title="Total Bookings"
+            value={stats.totalBookings.toLocaleString()}
+            icon={<Schedule className="h-6 w-6" />}
+            color="green"
+            change="+18%"
+            changeType="increase"
+          />
+          <StatsCard
+            title="Revenue"
+            value={`₹${(stats.totalRevenue / 1000).toFixed(0)}K`}
+            icon={<AttachMoney className="h-6 w-6" />}
+            color="orange"
+            change="+25%"
+            changeType="increase"
+          />
+          <StatsCard
+            title="Active Chats"
+            value={stats.activeChats.toLocaleString()}
+            icon={<Chat className="h-6 w-6" />}
+            color="indigo"
+            change="+8%"
+            changeType="increase"
+          />
+          <StatsCard
+            title="Pending Approvals"
+            value={stats.pendingApprovals.toLocaleString()}
+            icon={<PersonAdd className="h-6 w-6" />}
+            color="red"
+            change="-3%"
+            changeType="decrease"
+          />
+        </div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Recent Activity */}
+          <div className="lg:col-span-2">
+            <RecentActivity activities={recentActivity} isLoading={isLoading} />
           </div>
 
-          {/* Header */}
-          <div className="text-center mb-8 mt-4">
-            {/* Logo */}
-            <div className="flex items-center justify-center mb-4">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center shadow-lg">
-                  <Star className="h-6 w-6 text-white" />
-                </div>
-                <div className="absolute -top-1 -right-1 bg-red-500 rounded-full p-1">
-                  <AdminPanelSettings className="h-3 w-3 text-white" />
-                </div>
-              </div>
-              <div className="ml-3">
-                <div className="text-xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-                  TalkAstro
-                </div>
-                <div className="text-xs text-red-400 font-semibold">ADMIN PANEL</div>
-              </div>
-            </div>
-
-            <h1 className="text-2xl font-bold text-white mb-2">Super Admin Access</h1>
-            <p className="text-gray-300 text-sm mb-4">Secure authentication required</p>
-
-            {/* Security Status */}
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <Security className="h-4 w-4 text-blue-400" />
-              <span className="text-xs text-blue-400">Multi-layer Security Enabled</span>
-            </div>
-          </div>
-
-          {/* Login Attempts Warning */}
-          {loginAttempts > 0 && !isLocked && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="mb-4 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg flex items-center"
-            >
-              <Warning className="h-4 w-4 text-yellow-400 mr-2" />
-              <span className="text-yellow-400 text-xs">
-                {loginAttempts} failed attempt{loginAttempts > 1 ? "s" : ""}. {3 - loginAttempts} remaining.
-              </span>
-            </motion.div>
-          )}
-
-          {/* Lockout Warning */}
-          {isLocked && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="mb-4 p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-center"
-            >
-              <Lock className="h-6 w-6 text-red-400 mx-auto mb-2" />
-              <div className="text-red-400 font-semibold text-sm">Account Temporarily Locked</div>
-              <div className="text-red-300 text-xs mt-1">
-                Unlock in: {Math.floor(lockTimeRemaining / 60)}:{(lockTimeRemaining % 60).toString().padStart(2, "0")}
-              </div>
-            </motion.div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Email Field */}
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-200">
-                Admin Email
-              </label>
-              <div className="relative">
-                <Email className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-white/5 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-white placeholder-gray-400 text-sm transition-all duration-200"
-                  placeholder="aditya@gmail.com"
-                  required
-                  disabled={isLocked}
-                />
-              </div>
-            </div>
-
-            {/* Password Field */}
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium mb-2 text-gray-200">
-                Admin Password
-              </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-                <input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-12 py-3 bg-white/5 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-white placeholder-gray-400 text-sm transition-all duration-200"
-                  placeholder="Enter admin password"
-                  required
-                  disabled={isLocked}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
-                  disabled={isLocked}
-                >
-                  {showPassword ? <VisibilityOff className="h-4 w-4" /> : <Visibility className="h-4 w-4" />}
+          {/* Quick Actions */}
+          <div className="space-y-6">
+            {/* Quick Actions Card */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <Settings className="h-5 w-5 mr-2 text-gray-600" />
+                Quick Actions
+              </h3>
+              <div className="space-y-3">
+                <button className="w-full flex items-center justify-between p-3 bg-orange-50 hover:bg-orange-100 rounded-lg transition-colors group">
+                  <div className="flex items-center">
+                    <PersonAdd className="h-5 w-5 text-orange-600 mr-3" />
+                    <span className="text-sm font-medium text-orange-700">Approve Astrologers</span>
+                  </div>
+                  <span className="bg-orange-200 text-orange-800 text-xs px-2 py-1 rounded-full">
+                    {stats.pendingApprovals}
+                  </span>
+                </button>
+                <button className="w-full flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                  <Analytics className="h-5 w-5 text-blue-600 mr-3" />
+                  <span className="text-sm font-medium text-blue-700">View Analytics</span>
+                </button>
+                <button className="w-full flex items-center p-3 bg-green-50 hover:bg-green-100 rounded-lg transition-colors">
+                  <Payment className="h-5 w-5 text-green-600 mr-3" />
+                  <span className="text-sm font-medium text-green-700">Payment Reports</span>
+                </button>
+                <button className="w-full flex items-center p-3 bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors">
+                  <Security className="h-5 w-5 text-purple-600 mr-3" />
+                  <span className="text-sm font-medium text-purple-700">Security Settings</span>
                 </button>
               </div>
-
-              {/* Password Strength Indicator */}
-              {password && (
-                <div className="mt-2">
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="text-gray-400">Security Level</span>
-                    <span className={`font-medium ${getSecurityColor()}`}>
-                      {securityLevel.charAt(0).toUpperCase() + securityLevel.slice(1)}
-                    </span>
-                  </div>
-                  <div className="w-full bg-gray-700 rounded-full h-1">
-                    <div
-                      className={`h-1 rounded-full transition-all duration-300 ${getSecurityWidth()} ${getSecurityBg()}`}
-                    ></div>
-                  </div>
-                </div>
-              )}
             </div>
 
-            {/* Admin Options */}
-            <div className="flex items-center justify-between text-sm">
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  className="rounded border-gray-600 bg-white/5 text-orange-500 focus:ring-orange-500 focus:ring-offset-0"
-                  disabled={isLocked}
-                />
-                <span className="ml-2 text-gray-300">Keep me signed in</span>
-              </label>
-              <Link href="/admin/forgot-password" className="text-orange-400 hover:text-orange-300 transition-colors">
-                Reset Password
-              </Link>
+            {/* System Status */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <TrendingUp className="h-5 w-5 mr-2 text-gray-600" />
+                System Status
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Server Status</span>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                    <span className="text-sm font-medium text-green-600">Online</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Database</span>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                    <span className="text-sm font-medium text-green-600">Connected</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Payment Gateway</span>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                    <span className="text-sm font-medium text-green-600">Active</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Email Service</span>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></div>
+                    <span className="text-sm font-medium text-yellow-600">Limited</span>
+                    <h1>testing....</h1>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            {/* Login Button */}
-            <button
-              type="submit"
-              disabled={isLoading || isLocked}
-              className="w-full py-3 px-4 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-lg font-medium hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              {isLoading ? (
-                <div className="flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                  Authenticating...
-                </div>
-              ) : isLocked ? (
-                "Account Locked"
-              ) : (
-                <div className="flex items-center justify-center">
-                  <Dashboard className="h-4 w-4 mr-2" />
-                  Access Admin Panel
-                </div>
-              )}
-            </button>
-          </form>
-
-          {/* Back to Main Site */}
-          <p className="mt-8 text-center text-sm text-gray-400">
-            <Link href="/" className="text-orange-400 hover:text-orange-300 font-medium transition-colors">
-              ← Back to TalkAstro
-            </Link>
-          </p>
+          </div>
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </AdminLayout>
   )
 }

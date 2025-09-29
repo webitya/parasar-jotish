@@ -1,24 +1,27 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Twitter, Instagram, LinkedIn, ShoppingBag, AdminPanelSettings } from "@mui/icons-material"
+import { Facebook, Twitter, Instagram, LinkedIn } from "@mui/icons-material"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "Astrologers", href: "/astro" },
-    { name: "Shop", href: "/shop" },
-    { name: "About Us", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ]
-
   const services = [
     { name: "Astrology", href: "/services/astrology" },
     { name: "Rudraksha", href: "/services/rudraksha" },
-    { name: "Vastu Shastra", href: "/services/vastu" },
+    { name: "Vedic Vastu Shastra", href: "/services/vastu" },
     { name: "Meditation", href: "/services/meditation" },
-    { name: "Tarot Reading", href: "/services/tarot" },
+    { name: "Sound Energy Healing", href: "/services/sound-healing" },
+    { name: "Tarot Card Readings", href: "/services/tarot" },
+    { name: "Siddhi Puja Rituals", href: "/services/puja" },
+    { name: "Vedic Sanatan Trust", href: "/services/vedic-trust" },
+    { name: "Yagya", href: "/services/yagya" },
+  ]
+
+  const company = [
+    { name: "About Us", href: "/about" },
+    { name: "Contact", href: "/contact" },
+    { name: "Careers", href: "/careers" },
+    { name: "Blog", href: "/blog" },
   ]
 
   const support = [
@@ -29,85 +32,112 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-white border-t border-gray-100">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="bg-gray-50 pt-16 pb-8 relative">
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-red-50 opacity-10"></div>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Logo and Description */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center mb-4">
+          <div className="lg:col-span-2">
+            <Link href="/" className="flex items-center">
               <div className="relative">
                 <div className="absolute inset-0 bg-orange-500 rounded-full blur-sm opacity-20"></div>
-                <Image src="/logo.png" alt="TalkAstro Logo" width={32} height={32} className="relative z-10" />
+                <Image src="/logo.png" alt="TalkAstro Logo" width={40} height={40} className="relative z-10" />
               </div>
-              <span className="ml-2 text-lg font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+              <span className="ml-2 text-xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
                 TalkAstro
               </span>
             </Link>
-            <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-              Connect with expert astrologers for personalized guidance on life, relationships, and spiritual growth.
+            <p className="mt-4 text-gray-600">
+              Connect with expert astrologers for personalized guidance on life, relationships, career, and spiritual
+              growth.
             </p>
-            <div className="flex space-x-4">
+
+            {/* Contact Info */}
+            <div className="mt-6 text-gray-600 text-sm space-y-2">
+              <p>
+                <strong>Email:</strong>{" "}
+                <a href="mailto:mahtodineshwar5@gmail.com" className="hover:text-orange-500">
+                  mahtodineshwar5@gmail.com
+                </a>
+              </p>
+              <p>
+                <strong>Phone:</strong>{" "}
+                <a href="tel:9934338395" className="hover:text-orange-500">
+                  9934338395
+                </a>
+              </p>
+              <p>
+                <strong>Address:</strong> Dr D Mahto, Co-operative Colony, Dipugarha, Hazaribagh, Jharkhand – 825301
+              </p>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex space-x-4 mt-6">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-orange-500 transition-colors"
+                className="text-gray-500 hover:text-orange-500 transition-colors"
               >
-                <Facebook className="h-5 w-5" />
+                <Facebook />
+                <span className="sr-only">Facebook</span>
               </a>
               <a
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-orange-500 transition-colors"
+                className="text-gray-500 hover:text-orange-500 transition-colors"
               >
-                <Twitter className="h-5 w-5" />
+                <Twitter />
+                <span className="sr-only">Twitter</span>
               </a>
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-orange-500 transition-colors"
+                className="text-gray-500 hover:text-orange-500 transition-colors"
               >
-                <Instagram className="h-5 w-5" />
+                <Instagram />
+                <span className="sr-only">Instagram</span>
               </a>
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-orange-500 transition-colors"
+                className="text-gray-500 hover:text-orange-500 transition-colors"
               >
-                <LinkedIn className="h-5 w-5" />
+                <LinkedIn />
+                <span className="sr-only">LinkedIn</span>
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Services */}
           <div>
-            <h3 className="font-semibold text-gray-800 mb-4">Quick Links</h3>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm flex items-center"
-                  >
-                    {link.name === "Shop" && <ShoppingBag className="h-4 w-4 mr-1" />}
-                    {link.name}
+            <h3 className="font-semibold text-lg mb-4 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent inline-block">
+              Services
+            </h3>
+            <ul className="space-y-2">
+              {services.slice(0, 5).map((service) => (
+                <li key={service.name}>
+                  <Link href={service.href} className="text-gray-600 hover:text-orange-500 transition-colors">
+                    {service.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Company */}
           <div>
-            <h3 className="font-semibold text-gray-800 mb-4">Services</h3>
-            <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service.name}>
-                  <Link href={service.href} className="text-gray-600 hover:text-orange-500 transition-colors text-sm">
-                    {service.name}
+            <h3 className="font-semibold text-lg mb-4 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent inline-block">
+              Company
+            </h3>
+            <ul className="space-y-2">
+              {company.map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-gray-600 hover:text-orange-500 transition-colors">
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -116,11 +146,13 @@ export default function Footer() {
 
           {/* Support */}
           <div>
-            <h3 className="font-semibold text-gray-800 mb-4">Support</h3>
-            <ul className="space-y-3">
+            <h3 className="font-semibold text-lg mb-4 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent inline-block">
+              Support
+            </h3>
+            <ul className="space-y-2">
               {support.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-gray-600 hover:text-orange-500 transition-colors text-sm">
+                  <Link href={item.href} className="text-gray-600 hover:text-orange-500 transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -129,19 +161,15 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-gray-100 mt-12 pt-8">
+        <div className="border-t border-gray-200 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-500 text-sm">&copy; {currentYear} TalkAstro. All rights reserved.</p>
-
-            {/* Admin Login Button */}
-            <div className="mt-4 md:mt-0">
-              <Link
-                href="/Signin"
-                className="inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-orange-50 text-gray-700 hover:text-orange-600 rounded-lg transition-all duration-200 text-sm font-medium border border-gray-200 hover:border-orange-200"
-              >
-                <AdminPanelSettings className="h-4 w-4 mr-2" />
-                Admin Login
+            <p className="text-gray-600 text-sm">&copy; {currentYear} TalkAstro. All rights reserved.</p>
+            <div className="mt-4 md:mt-0 flex items-center space-x-6">
+              <Link href="/privacy" className="text-sm text-gray-600 hover:text-orange-500 transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-sm text-gray-600 hover:text-orange-500 transition-colors">
+                Terms of Service
               </Link>
             </div>
           </div>

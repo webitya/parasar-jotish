@@ -164,7 +164,7 @@ export default function AdminLoginPage() {
           <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
             <div className="flex items-center bg-red-500 text-white px-4 py-1 rounded-full text-xs font-semibold shadow-lg">
               <Shield className="h-3 w-3 mr-1" />
-              SECURE ADMIN PANEL ACCESS
+              SECURE ADMIN ACCESS
             </div>
           </div>
 
