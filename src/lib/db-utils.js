@@ -1,5 +1,4 @@
 // Mock database utilities for development
-// In production, these would connect to your actual database
 
 export async function getRecentActivity() {
   // Mock recent activity data

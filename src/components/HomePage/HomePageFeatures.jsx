@@ -32,7 +32,7 @@ export default function HomePageFeatures() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose TalkAstro</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Us</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             We combine ancient wisdom with modern technology to provide you with the most accurate and accessible
             astrological guidance.

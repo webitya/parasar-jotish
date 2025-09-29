@@ -78,7 +78,7 @@ export default function VastuService() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="/astrologers?specialty=Vastu Shastra"
+                  href="/astrologers.png?specialty=Vastu Shastra"
                   className="bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-lg hover:from-green-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center justify-center"
                 >
                   Consult Vastu Expert
@@ -101,7 +101,7 @@ export default function VastuService() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-green-500 to-teal-500 rounded-full blur-3xl opacity-20"></div>
                 <Image
-                  src="/services/vastu-hero.png"
+                  src="/astrologers.png"
                   alt="Vastu Shastra consultation"
                   width={600}
                   height={500}
@@ -197,12 +197,7 @@ export default function VastuService() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-lg font-bold text-green-500">{service.price}</span>
-                  <Link
-                    href="/astrologers?specialty=Vastu Shastra"
-                    className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-teal-500 transition-colors text-sm"
-                  >
-                    Book Now
-                  </Link>
+              
                 </div>
               </motion.div>
             ))}

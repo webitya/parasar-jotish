@@ -46,7 +46,7 @@ Dr D Mahto
               <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full blur-3xl opacity-20"></div>
               <Image
                 src="/about-hero.png"
-                alt="About TalkAstro"
+                alt="About Dr D Mahto "
                 width={600}
                 height={500}
                 // className="relative z-10 animate-bounce"

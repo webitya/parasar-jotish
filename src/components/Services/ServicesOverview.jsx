@@ -6,67 +6,34 @@ import ServiceCard from "@/components/service-card"
 
 const services = [
   {
-    id: "astrology",
-    title: "Astrology",
-    description: "Discover insights about your life path through the ancient wisdom of astrology.",
-    icon: "/icons/astrology.svg",
+    id: "horoscope",
+    title: "Horoscope Analysis",
+    description: "Get personalized horoscope readings to understand your past, present, and future.",
     color: "from-purple-500 to-indigo-600",
   },
   {
-    id: "rudraksha",
-    title: "Rudraksha",
-    description: "Harness the spiritual power of sacred Rudraksha beads for balance and protection.",
-    icon: "/icons/rudraksha.svg",
-    color: "from-orange-500 to-red-600",
-  },
-  {
-    id: "vastu",
-    title: "Vedic Vastu Shastra",
-    description: "Create harmony in your living spaces with ancient architectural wisdom.",
-    icon: "/icons/vastu.svg",
-    color: "from-green-500 to-teal-600",
-  },
-  {
-    id: "meditation",
-    title: "Meditation",
-    description: "Find inner peace and clarity through guided meditation practices.",
-    icon: "/icons/meditation.svg",
+    id: "career",
+    title: "Career Counselling",
+    description: "Receive astrological guidance for career choices, growth, and success in your profession.",
     color: "from-blue-500 to-cyan-600",
   },
   {
-    id: "sound-healing",
-    title: "The Sound Energy Healing",
-    description: "Experience the therapeutic vibrations of sound for mental and physical healing.",
-    icon: "/icons/sound-healing.svg",
-    color: "from-yellow-500 to-amber-600",
-  },
-  {
-    id: "tarot",
-    title: "Tarot Card Readings",
-    description: "Gain clarity on life's questions through the mystical wisdom of tarot cards.",
-    icon: "/icons/tarot.svg",
+    id: "marriage",
+    title: "Marriage Problem",
+    description: "Resolve compatibility, relationship, and marital issues with expert astrological remedies.",
     color: "from-pink-500 to-rose-600",
   },
   {
-    id: "puja",
-    title: "Siddhi Puja Rituals",
-    description: "Participate in sacred rituals designed to manifest specific intentions.",
-    icon: "/icons/puja.svg",
-    color: "from-red-500 to-orange-600",
+    id: "health",
+    title: "Health Issue",
+    description: "Understand planetary influences on your health and find holistic solutions.",
+    color: "from-green-500 to-teal-600",
   },
   {
-    id: "vedic-trust",
-    title: "Vedic Sanatan Trust",
-    description: "Connect with the timeless wisdom of Vedic traditions and teachings.",
-    icon: "/icons/vedic.svg",
-    color: "from-indigo-500 to-violet-600",
-  },
-  {
-    id: "yagya",
-    title: "Yagya",
-    description: "Experience the transformative power of sacred fire ceremonies.",
-    icon: "/icons/yagya.svg",
-    color: "from-amber-500 to-yellow-600",
+    id: "others",
+    title: "Other Problems",
+    description: "Get guidance for financial, family, and other life challenges through astrology.",
+    color: "from-orange-500 to-red-600",
   },
 ]
 
@@ -84,8 +51,7 @@ export default function ServicesOverview() {
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
             <p className="text-lg opacity-90 max-w-2xl mx-auto">
-              Explore our comprehensive range of spiritual and astrological services designed to guide you on your
-              journey of self-discovery and growth.
+              Explore our specialized astrology services designed to provide clarity and solutions to life’s challenges.
             </p>
           </motion.div>
         </div>
@@ -125,7 +91,7 @@ export default function ServicesOverview() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Begin Your Journey?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Connect with our expert practitioners and discover the transformative power of ancient wisdom.
+              Connect with our expert astrologers and discover personalized solutions for your life’s challenges.
             </p>
             <Link
               href="/astrologers"

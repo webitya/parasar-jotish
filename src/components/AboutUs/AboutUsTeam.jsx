@@ -50,7 +50,7 @@ export default function AboutUsTeam() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Meet Our Team</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            The passionate individuals behind TalkAstro, dedicated to bringing you the best spiritual guidance
+            The passionate individuals behind Dr D Mahto , dedicated to bringing you the best spiritual guidance
             experience.
           </p>
         </motion.div>
