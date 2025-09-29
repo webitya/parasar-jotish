@@ -20,7 +20,7 @@ export default function HomePageHero() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Discover Your Path with{" "}
               <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-Dr D Mahto 
+Dr. Mahto 
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-8">
@@ -29,14 +29,14 @@ Dr D Mahto
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Link
-                href="/astrologers"
+                href="/contact"
                 className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center justify-center font-medium"
               >
                 Book a Session
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
-                href="/services"
+                href="/about"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 transition-colors font-medium"
               >
                 Explore Services

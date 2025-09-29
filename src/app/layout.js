@@ -7,8 +7,8 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Dr D Mahto - Connect with Expert Astrologer",
-  description: "Book sessions with experienced astrologer Dr D Mahto for guidance on life, career, relationships and more.",
+  title: "Dr. Mahto - Connect with Expert Astrologer",
+  description: "Book sessions with experienced astrologer Dr. Mahto for guidance on life, career, relationships and more.",
 }
 
 export default function RootLayout({ children }) {
