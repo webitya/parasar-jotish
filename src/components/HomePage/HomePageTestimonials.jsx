@@ -43,7 +43,7 @@ export default function HomePageTestimonials() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Hear from people who have found guidance and clarity through Dr D Mahto .
+            Hear from people who have found guidance and clarity through Dr. Mahto .
           </p>
         </motion.div>
 
