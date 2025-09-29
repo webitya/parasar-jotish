@@ -128,6 +128,7 @@ export default function VastuService() {
               Understanding the fundamental principles that govern the flow of energy in your space
             </p>
           </motion.div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {vastuPrinciples.map((principle, index) => (
               <motion.div
@@ -170,6 +171,7 @@ export default function VastuService() {
               Comprehensive Vastu consultation services for all types of properties
             </p>
           </motion.div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {vastuServices.map((service, index) => (
               <motion.div

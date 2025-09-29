@@ -17,7 +17,8 @@ export default function AboutUsStory() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Founded with a vision to make ancient wisdom accessible to the modern world, TalkAstro has grown from a
+              Founded with a vision to make ancient wisdom accessible to the modern world, Dr D Mahto 
+ has grown from a
               simple idea to a trusted platform connecting thousands of seekers with expert guidance.
             </p>
           </motion.div>
@@ -32,8 +33,8 @@ export default function AboutUsStory() {
               <h3 className="text-2xl font-bold mb-6">Bridging Ancient Wisdom with Modern Technology</h3>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  In 2020, our founders recognized a growing need for authentic spiritual guidance in an increasingly
-                  digital world. They envisioned a platform where anyone could access the profound wisdom of astrology,
+                  In 2002, People recognized a growing need for authentic spiritual guidance in an increasingly
+                  digital world. People needs a path where anyone could access the profound wisdom of astrology,
                   regardless of their location or background.
                 </p>
                 <p>
@@ -41,7 +42,8 @@ export default function AboutUsStory() {
                   featuring verified astrologers, secure payment systems, and real-time consultation capabilities.
                 </p>
                 <p>
-                  Today, TalkAstro serves thousands of users worldwide, helping them navigate life's challenges through
+                  Today, Dr D Mahto 
+ serves thousands of users worldwide, helping them navigate life's challenges through
                   the timeless wisdom of the stars.
                 </p>
               </div>

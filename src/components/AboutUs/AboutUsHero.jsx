@@ -18,7 +18,7 @@ export default function AboutUsHero() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               About{" "}
               <span className="bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">
-                TalkAstro
+Dr D Mahto 
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8">
@@ -49,7 +49,7 @@ export default function AboutUsHero() {
                 alt="About TalkAstro"
                 width={600}
                 height={500}
-                className="relative z-10 animate-bounce"
+                // className="relative z-10 animate-bounce"
               />
             </div>
           </motion.div>
