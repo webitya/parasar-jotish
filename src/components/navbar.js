@@ -23,10 +23,10 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   const services = [
-    { name: "Astrology", href: "/services/astrology" },
-    { name: "Rudraksha", href: "/services/rudraksha" },
-    { name: "Vedic Vastu Shastra", href: "/services/vastu" },
-    { name: "Yagya", href: "/services/yagya" },
+    { name: "Horoscope Analysis", href: "/services/astrology" },
+    { name: "Career counselling", href: "/services/rudraksha" },
+    { name: "Marriage Proplem", href: "/services/vastu" },
+    { name: "Health Issues", href: "/services/yagya" },
   ]
 
   return (

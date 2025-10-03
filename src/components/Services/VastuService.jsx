@@ -3,61 +3,53 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { CheckCircle, ArrowForward, Home, Business, Apartment } from "@mui/icons-material"
+import { CheckCircle, ArrowForward, Favorite, FavoriteBorder, FavoriteTwoTone } from "@mui/icons-material"
 
-const vastuPrinciples = [
+const marriagePrinciples = [
   {
-    name: "Direction Alignment",
-    description: "Proper orientation of rooms and entrances according to cardinal directions",
-    icon: <Home className="h-8 w-8" />,
-    benefits: ["Enhanced energy flow", "Better health", "Improved prosperity"],
+    name: "Kundli Matching",
+    description: "Analyzing compatibility through detailed horoscope matching",
+    icon: <Favorite className="h-8 w-8" />,
+    benefits: ["Stronger relationships", "Reduced conflicts", "Harmonious married life"],
   },
   {
-    name: "Five Elements Balance",
-    description: "Harmonizing earth, water, fire, air, and space elements in your space",
-    icon: <Business className="h-8 w-8" />,
-    benefits: ["Natural harmony", "Stress reduction", "Mental clarity"],
+    name: "Dosha Remedies",
+    description: "Identifying and neutralizing Mangal Dosha, Shani Dosha, and other challenges",
+    icon: <FavoriteBorder className="h-8 w-8" />,
+    benefits: ["Balanced energies", "Overcome obstacles", "Peaceful union"],
   },
   {
-    name: "Sacred Geometry",
-    description: "Using ancient geometric principles for optimal space design",
-    icon: <Apartment className="h-8 w-8" />,
-    benefits: ["Positive vibrations", "Spiritual growth", "Peace of mind"],
+    name: "Planetary Guidance",
+    description: "Astrological solutions for delayed marriage and relationship issues",
+    icon: <FavoriteTwoTone className="h-8 w-8" />,
+    benefits: ["Timely marriage", "Better understanding", "Emotional stability"],
   },
 ]
 
-const vastuServices = [
+const marriageServices = [
   {
-    name: "Residential Vastu",
-    description: "Complete Vastu analysis and remedies for homes and apartments",
-    price: "₹5,000 - ₹15,000",
-    features: ["Site analysis", "Room-wise recommendations", "Remedy solutions", "Follow-up consultation"],
+    name: "Pre-Marriage Consultation",
+    description: "Guidance for individuals and families on kundli matching and relationship compatibility",
+    features: ["Detailed horoscope analysis", "Compatibility score", "Dosha check", "Suggested remedies"],
   },
   {
-    name: "Commercial Vastu",
-    description: "Vastu consultation for offices, shops, and business establishments",
-    price: "₹10,000 - ₹25,000",
-    features: [
-      "Business growth analysis",
-      "Employee productivity enhancement",
-      "Financial prosperity tips",
-      "Ongoing support",
-    ],
+    name: "Marriage Remedies",
+    description: "Astrological solutions for delays or obstacles in marriage",
+    features: ["Gemstone recommendations", "Mantras and rituals", "Fasting and puja guidance", "Lifestyle alignment"],
   },
   {
-    name: "Industrial Vastu",
-    description: "Large-scale Vastu planning for factories and industrial complexes",
-    price: "₹25,000 - ₹50,000",
-    features: ["Complete site planning", "Production optimization", "Safety enhancement", "Detailed reports"],
+    name: "Post-Marriage Guidance",
+    description: "Solutions for strengthening bonds and resolving conflicts in married life",
+    features: ["Relationship healing", "Dosha balancing", "Peaceful communication guidance", "Continuous support"],
   },
 ]
 
-export default function VastuService() {
+export default function MarriageService() {
   return (
     <main className="pt-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-green-50 to-white py-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-teal-50 opacity-30"></div>
+      <section className="relative overflow-hidden bg-gradient-to-b from-pink-50 to-white py-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-rose-50 opacity-30"></div>
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center">
             <motion.div
@@ -67,21 +59,21 @@ export default function VastuService() {
               transition={{ duration: 0.5 }}
             >
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Vedic{" "}
-                <span className="bg-gradient-to-r from-green-500 to-teal-500 bg-clip-text text-transparent">
-                  Vastu Shastra
+                Astrological {" "}
+                <span className="bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text text-transparent">
+                  Marriage Solutions
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8">
-                Transform your living and working spaces with the ancient science of Vastu Shastra. Create harmony,
-                prosperity, and positive energy in your environment.
+                Resolve marriage-related challenges through astrology. Find remedies for delays, incompatibility, and
+                relationship harmony.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="/astrologers.png?specialty=Vastu Shastra"
-                  className="bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-lg hover:from-green-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center justify-center"
+                  href="/astrologers?specialty=Marriage"
+                  className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-3 rounded-lg hover:from-pink-600 hover:to-rose-600 transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center justify-center"
                 >
-                  Consult Vastu Expert
+                  Consult Marriage Expert
                   <ArrowForward className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
@@ -99,10 +91,10 @@ export default function VastuService() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-green-500 to-teal-500 rounded-full blur-3xl opacity-20"></div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full blur-3xl opacity-20"></div>
                 <Image
                   src="/astrologers.png"
-                  alt="Vastu Shastra consultation"
+                  alt="Astrological Marriage Consultation"
                   width={600}
                   height={500}
                   className="relative z-10 animate-float"
@@ -123,14 +115,14 @@ export default function VastuService() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Core Vastu Principles</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Core Marriage Astrology Principles</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Understanding the fundamental principles that govern the flow of energy in your space
+              Understanding the astrological foundations of marriage compatibility and remedies
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {vastuPrinciples.map((principle, index) => (
+            {marriagePrinciples.map((principle, index) => (
               <motion.div
                 key={index}
                 className="bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105 p-6 text-center"
@@ -139,13 +131,13 @@ export default function VastuService() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="text-green-500 mb-4">{principle.icon}</div>
+                <div className="text-pink-500 mb-4">{principle.icon}</div>
                 <h3 className="text-xl font-semibold mb-3">{principle.name}</h3>
                 <p className="text-muted-foreground mb-4">{principle.description}</p>
                 <ul className="space-y-2">
                   {principle.benefits.map((benefit, idx) => (
                     <li key={idx} className="flex items-center justify-center text-sm">
-                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      <CheckCircle className="h-4 w-4 text-pink-500 mr-2" />
                       {benefit}
                     </li>
                   ))}
@@ -166,14 +158,14 @@ export default function VastuService() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Vastu Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Marriage Astrology Services</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive Vastu consultation services for all types of properties
+              Comprehensive astrological consultation services for marriage-related challenges
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {vastuServices.map((service, index) => (
+            {marriageServices.map((service, index) => (
               <motion.div
                 key={index}
                 className="bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105 p-6"
@@ -189,15 +181,11 @@ export default function VastuService() {
                   <ul className="space-y-1">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center text-sm">
-                        <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                        <CheckCircle className="h-4 w-4 text-pink-500 mr-2" />
                         {feature}
                       </li>
                     ))}
                   </ul>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-lg font-bold text-green-500">{service.price}</span>
-              
                 </div>
               </motion.div>
             ))}
@@ -206,7 +194,7 @@ export default function VastuService() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-green-600 to-teal-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-pink-600 to-rose-600 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -214,13 +202,13 @@ export default function VastuService() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Transform Your Space Today</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Resolve Marriage Problems Today</h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-              Get expert Vastu consultation and create a harmonious environment that supports your goals and well-being
+              Get expert astrological consultation for marriage delays, compatibility issues, and relationship harmony.
             </p>
             <Link
-              href="/astrologers?specialty=Vastu Shastra"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-white text-green-600 font-medium hover:bg-opacity-90 transition-colors"
+              href="/contact?specialty=Marriage"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-white text-pink-600 font-medium hover:bg-opacity-90 transition-colors"
             >
               Start Your Consultation
               <ArrowForward className="ml-2 h-5 w-5" />

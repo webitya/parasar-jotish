@@ -44,7 +44,8 @@ export default function Footer() {
                 <Image src="/logo.png" alt="TalkAstro Logo" width={40} height={40} className="relative z-10" />
               </div>
               <span className="ml-2 text-xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                TalkAstro
+                Dr D Mahto 
+
               </span>
             </Link>
             <p className="mt-4 text-gray-600">
@@ -163,7 +164,8 @@ export default function Footer() {
 
         <div className="border-t border-gray-200 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-600 text-sm">&copy; {currentYear} TalkAstro. All rights reserved.</p>
+            <p className="text-gray-600 text-sm">&copy; {currentYear} Dr D Mahto 
+. All rights reserved.</p>
             <div className="mt-4 md:mt-0 flex items-center space-x-6">
               <Link href="/privacy" className="text-sm text-gray-600 hover:text-orange-500 transition-colors">
                 Privacy Policy

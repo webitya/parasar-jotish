@@ -63,7 +63,7 @@ export default function AstrologyPage() {
                 transition={{ duration: 0.5 }}
               >
                 <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                  Discover Your Destiny with <span className="text-gradient">Astrology</span>
+                 Discover What the Stars Reveal About You <span className="text-gradient"></span>
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground mb-8">
                   Unlock the secrets of the stars and gain profound insights into your life, relationships, and future
@@ -117,12 +117,9 @@ export default function AstrologyPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">What is Astrology?</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">What is Horoscope Analysis?</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Astrology is the ancient practice of studying the movements and relative positions of celestial bodies
-                  to gain insights into human affairs and terrestrial events. For thousands of years, astrologers have
-                  used the positions of the sun, moon, planets, and stars at the time of birth to create detailed birth
-                  charts that reveal personality traits, life patterns, and potential future events.
+                 A horoscope analysis is more than just reading your daily stars—it’s a deep exploration of your personality, life path, strengths, and challenges as revealed by the position of planets at the time of your birth. Your horoscope (also called a birth chart or natal chart) is a unique cosmic map that reflects the alignment of the Sun, Moon, and planets in the twelve zodiac signs and twelve houses.
                 </p>
               </motion.div>
 
@@ -206,25 +203,7 @@ export default function AstrologyPage() {
 
         {/* Featured Astrologers */}
       {/* Expert Astrologers */}
-<section className="py-20 bg-gradient-to-r from-red-600 to-red-400 text-white">
-  <div className="container mx-auto px-4">
-    <motion.div
-      className="text-center mb-16"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-    >
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">Expert Astrologers</h2>
-      <p className="text-lg max-w-2xl mx-auto text-white/90">
-        Connect with our verified and experienced astrologers specializing in various astrological traditions
-      </p>
-    </motion.div>
 
-
-
-  </div>
-</section>
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
@@ -241,7 +220,7 @@ export default function AstrologyPage() {
                 astrology
               </p>
               <Link
-                href="/astrologers?specialty=Vedic Astrology"
+                href="/contact?specialty=Vedic Astrology"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-white text-purple-600 font-medium hover:bg-opacity-90 transition-colors"
               >
                 Start Your Journey
