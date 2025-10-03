@@ -24,9 +24,9 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-gray-50">
+      {/* <section id="features" className="py-20 bg-gray-50">
         <HomePageFeatures />
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
       <section id="testimonials" className="py-20">

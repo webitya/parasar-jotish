@@ -23,18 +23,12 @@ export default function HomePageCTA() {
             Join thousands of satisfied clients who have found clarity and guidance through our expert astrologers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+           
             <Link
-              href="/astrologers"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-orange-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
-            >
-              Find Your Astrologer
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-            <Link
-              href="/signup"
+              href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors"
             >
-              Create Free Account
+              Reach Us
             </Link>
           </div>
         </motion.div>

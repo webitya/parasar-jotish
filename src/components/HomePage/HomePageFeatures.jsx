@@ -23,7 +23,7 @@ const features = [
 
 export default function HomePageFeatures() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-1 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-16"
