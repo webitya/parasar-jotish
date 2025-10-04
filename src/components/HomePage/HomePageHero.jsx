@@ -1,16 +1,19 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight } from "@mui/icons-material"
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight } from "@mui/icons-material";
 
 export default function HomePageHero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-orange-50 to-white py-20 md:py-32">
+      {/* Background Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-red-50 opacity-30"></div>
+
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center min-h-[70vh] text-center md:text-left">
+        <div className="flex flex-col md:flex-row justify-between items-center min-h-[70vh] text-center md:text-left relative z-10">
+          {/* Text Section */}
           <motion.div
             className="md:w-1/2 mb-10 md:mb-0"
             initial={{ opacity: 0, x: -50 }}
@@ -20,29 +23,39 @@ export default function HomePageHero() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Discover Your Path with{" "}
               <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-Dr. Mahto 
+                Dr. Mahto
               </span>
             </h1>
+
             <p className="text-lg md:text-xl text-gray-600 mb-8">
-              Connect with expert astrologers for personalized guidance on life, relationships, career, and spiritual
-              growth.
+              Connect with expert astrologers for personalized guidance on life,
+              relationships, career, and spiritual growth.
             </p>
+
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              {/* Book a Session */}
               <Link
                 href="/contact"
+                prefetch
                 className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center justify-center font-medium"
               >
                 Book a Session
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
+
+              {/* Explore Services */}
               <Link
                 href="/about"
+                prefetch
                 className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 transition-colors font-medium"
               >
                 Explore Services
               </Link>
             </div>
           </motion.div>
+
+          {/* Image Section */}
           <motion.div
             className="md:w-1/2 flex justify-center"
             initial={{ opacity: 0, x: 50 }}
@@ -50,12 +63,15 @@ Dr. Mahto
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="relative">
+              {/* Glow effect */}
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-500 to-red-500 rounded-full blur-3xl opacity-20"></div>
+
               <Image
-                src="/pandit.jpg?height=400&width=400&text=Astrology+Consultation"
+                src="/pandit.jpg"
                 alt="Astrology consultation"
                 width={400}
                 height={400}
+                priority
                 className="relative z-10 rounded-lg shadow-lg"
               />
             </div>
@@ -63,5 +79,5 @@ Dr. Mahto
         </div>
       </div>
     </section>
-  )
+  );
 }
