@@ -40,7 +40,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <span className="ml-2 text-xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-              Parashar Jyoti Shsodh Sansthan
+              Parashar Jyoti Shodh Sansthan
             </span>
           </Link>
 
