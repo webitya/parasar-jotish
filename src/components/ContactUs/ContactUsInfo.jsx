@@ -20,7 +20,7 @@ const contactInfo = [
     icon: <LocationOn className="h-6 w-6" />,
     title: "Visit Us",
     details: [
-      "Dr. Mahto",
+      "Dr. D Mahto",
       "Co-operative colony, Dipugarha",
       "Hazaribagh, Jharkhand - 825301",
     ],

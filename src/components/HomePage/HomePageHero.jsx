@@ -23,8 +23,7 @@ export default function HomePageHero() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Discover Your Path with{" "}
               <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                Dr. Mahto
-              </span>
+             Dr. D Mahto              </span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-600 mb-8">

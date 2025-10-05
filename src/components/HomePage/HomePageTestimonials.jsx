@@ -5,24 +5,49 @@ import { motion } from "framer-motion"
 
 const testimonials = [
   {
-    name: "Priya Sharma",
-    role: "Delhi",
+    name: "Paritosh Narayan",
+    role: "Bangalore",
     content:
       "They helped me gain clarity during a difficult time in my life. The astrologer was insightful and compassionate.",
   },
   {
-    name: "Rahul Mehta",
-    role: "Mumbai",
+    name: "Subham Shaurya",
+    role: "Delhi",
     content:
       "I was skeptical at first, but my reading was surprisingly accurate. I've booked multiple sessions since then.",
   },
   {
-    name: "Ananya Patel",
-    role: "Bangalore",
+    name: "Ashok Kumar",
+    role: "Gandhinagar",
     content:
       "The convenience of chatting with an astrologer from home is amazing. He has become my go-to for spiritual guidance.",
   },
-]
+  {
+    name: "Rajkumar Mehta",
+    role: "Puducherry",
+    content:
+      "They helped me gain clarity during a difficult time in my life. The astrologer was insightful and compassionate.",
+  },
+  {
+    name: "Dr Chandra Shekhar Azad",
+    role: "Patna",
+    content:
+      "I was skeptical at first, but my reading was surprisingly accurate. I've booked multiple sessions since then.",
+  },
+  {
+    name: "Sanjay Sinha",
+    role: "Mumbai",
+    content:
+      "The convenience of chatting with an astrologer from home is amazing. He has become my go-to for spiritual guidance.",
+  },
+  {
+    name: "G Verma",
+    role: "Kolkata",
+    content:
+      "They helped me gain clarity during a difficult time in my life. The astrologer was insightful and compassionate.",
+  },
+];
+
 
 export default function HomePageTestimonials() {
   const [activeTestimonial, setActiveTestimonial] = useState(0)
@@ -47,7 +72,7 @@ export default function HomePageTestimonials() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Hear from people who have found guidance and clarity through Dr. Mahto.
+            Hear from people who have found guidance and clarity through Dr D Mahto.
           </p>
         </motion.div>
 
