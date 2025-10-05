@@ -6,22 +6,22 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const services = [
-    { name: "Astrology", href: "/services/astrology" },
-    { name: "Rudraksha", href: "/services/rudraksha" },
-    { name: "Vedic Vastu Shastra", href: "/services/vastu" },
-    { name: "Meditation", href: "/services/meditation" },
-    { name: "Sound Energy Healing", href: "/services/sound-healing" },
-    { name: "Tarot Card Readings", href: "/services/tarot" },
-    { name: "Siddhi Puja Rituals", href: "/services/puja" },
-    { name: "Vedic Sanatan Trust", href: "/services/vedic-trust" },
-    { name: "Yagya", href: "/services/yagya" },
+    { name: "Horoscope Analysis", href: "/services/astrology" },
+    { name: "career Counselling", href: "/services/rudraksha" },
+    { name: "Astrological Marriage solutions", href: "/services/vastu" },
+    { name: "Astrological Helath Remedies", href: "/services/yagya" },
+    // { name: "Sound Energy Healing", href: "/services/sound-healing" },
+    // { name: "Tarot Card Readings", href: "/services/tarot" },
+    // { name: "Siddhi Puja Rituals", href: "/services/puja" },
+    // { name: "Vedic Sanatan Trust", href: "/services/vedic-trust" },
+    // { name: "Yagya", href: "/services/yagya" },
   ]
 
   const company = [
+     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "Careers", href: "/careers" },
-    { name: "Blog", href: "/blog" },
+   
   ]
 
   const support = [
