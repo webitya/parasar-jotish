@@ -1,24 +1,30 @@
-import { NextResponse } from "next/server"
+// middleware.js
+import { NextResponse } from 'next/server';
 
-export function middleware(request) {
-  // Admin routes protection
-  if (request.nextUrl.pathname.startsWith("/admin")) {
-    // Skip login page
-    if (request.nextUrl.pathname === "/admin/login") {
-      return NextResponse.next()
-    }
+export function middleware(req) {
+  const { pathname } = req.nextUrl;
 
-    // Check for admin session (this would be more robust with proper JWT validation)
-    const adminToken = request.cookies.get("admin_token")
-
-    if (!adminToken) {
-      return NextResponse.redirect(new URL("/admin/login", request.url))
-    }
+  // Allow internal routes (Next.js system files)
+  if (
+    pathname === '/' ||
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/_next') ||
+    pathname.includes('.')
+  ) {
+    return NextResponse.next();
   }
 
-  return NextResponse.next()
+  // Define your valid app routes here
+  const validRoutes = ['/', '/about', '/contact', '/products'];
+
+  if (!validRoutes.includes(pathname)) {
+    // Redirect unknown routes to home
+    return NextResponse.redirect(new URL('/', req.url));
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
-}
+  matcher: '/:path*',
+};
